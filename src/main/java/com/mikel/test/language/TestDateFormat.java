@@ -61,8 +61,10 @@ public class TestDateFormat {
         try {
             Date date = f1.parse("01 26 2016 01:22:33");
             System.out.println("simple date format ----------------");
-            System.out.println(f2.format(date));
-            System.out.println(f3.format(date));
+            
+            
+            System.out.println(f2.format(date));//enero 2016
+            System.out.println(f3.format(date));//1
             
         } catch (ParseException ex) {
          ex.printStackTrace();
