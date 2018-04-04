@@ -1,4 +1,4 @@
-package com.mikel.language;
+package com.mikel.test.language;
 
 public class TestLiterales {
 
@@ -31,6 +31,13 @@ public class TestLiterales {
         //double double_bin = 0b10.1;no se puede usar binario tipo double
         System.out.println("bin_cero->"+bin_cero+" , bin_uno->"+bin_uno+" , bin_dos->"+bin_dos);
 
-
+         //El guon bajo no se puede agregar al inicio o al final de un numero
+         //No compilan
+         //double a = _1000.00; 
+         //double b = 1000.00_; 
+         //double c = 1000_.00;
+         double d = 1_00_0.0_0; //compila
+         
+         
     }
 }
