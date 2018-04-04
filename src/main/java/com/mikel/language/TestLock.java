@@ -24,7 +24,7 @@ public class TestLock {
         //sintaxis
         Lock lock = new ReentrantLock();
         
-        //
+        //garantiza que el orden de los hilos conforme se van pidiendo
         Lock lock2 = new ReentrantLock(true);
         try{
             lock.lock();

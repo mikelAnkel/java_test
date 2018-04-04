@@ -11,8 +11,6 @@ import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -31,8 +29,9 @@ public class TestDirectoryStream {
             }
         } catch (IOException ex) { ex.printStackTrace(); }
         
+        //probando FileVisitor
+        //Se usa para visitar todo un arbol de directorios 
         System.out.println("Testing FileVisitor");
-        
         try {
             Files.walk(Paths.get("C:\\Users\\Miguel\\Documents\\respaldo"), 2,FileVisitOption.FOLLOW_LINKS)
                     //.filter(p -> p.getFileName().endsWith("file"))
