@@ -12,8 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 /**
  *
@@ -28,6 +27,7 @@ public class TestDateFormat {
         DateFormat m = DateFormat.getDateInstance(DateFormat.MEDIUM);
         DateFormat l = DateFormat.getDateInstance(DateFormat.LONG);
         DateFormat f = DateFormat.getDateInstance(DateFormat.FULL);
+        
         Date d = new GregorianCalendar(2015, Calendar.JULY, 4).getTime();
 
         System.out.println(s.format(d));//4/07/15

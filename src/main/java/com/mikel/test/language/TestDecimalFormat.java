@@ -23,7 +23,7 @@ public class TestDecimalFormat {
         double d = 1234567.437;
         DecimalFormat uno = new DecimalFormat("###,###,###.###");
         DecimalFormat dos = new DecimalFormat("000,000,000.00000");
-        DecimalFormat tres = new DecimalFormat("$###,###.####");
+        DecimalFormat tres = new DecimalFormat("##,###,##,##.####");
         
         System.out.println( uno.format(d) );//1,234,567.437
         System.out.println( dos.format(d) );//001,234,567.43700
