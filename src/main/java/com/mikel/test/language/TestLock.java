@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mikel.language;
+package com.mikel.test.language;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
@@ -35,7 +35,6 @@ public class TestLock {
         //throws IllegalMonitorStateException at runtime
         
         //trata de obtener inmediatamente un lock, retorna boolean indicando si el lock fue obtenido o no
-        //boolean sucessLock = lock.tryLock();
         if (lock.tryLock() ) lock.unlock();
         
         //incluye un tiempo limite para obtener un lock
