@@ -1,11 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mikel.test.language;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -23,11 +21,12 @@ public class TestDecimalFormat {
         double d = 1234567.437;
         DecimalFormat uno = new DecimalFormat("###,###,###.###");
         DecimalFormat dos = new DecimalFormat("000,000,000.00000");
-        DecimalFormat tres = new DecimalFormat("##,###,##,##.####");
+        DecimalFormat tres = new DecimalFormat("$###,###.##");
         
         System.out.println( uno.format(d) );//1,234,567.437
         System.out.println( dos.format(d) );//001,234,567.43700
-        System.out.println( tres.format(d) );//$1,234,567.437
+        System.out.println( tres.format(d) );//$1,234,567.44 <-- si se truncan digitos se redondea !!
+        
         
     }
 }
