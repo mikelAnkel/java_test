@@ -19,6 +19,16 @@ public class TestCollection {
  
     public static void main(String[] args) {
         
+        testMerge();
+    }
+    
+    public static void computeIfPresent(){
+        
+        Map<String,Integer> couts = new HashMap<>();
+        //setea el valor que retorna  BiFunction, null si no aplica
+        couts.computeIfPresent("Jenny", (k,v)-> v+1);
+        //setea el valor que retorna Function, solo si key existe o es valor null
+        couts.computeIfAbsent("Tom", (k) -> 1);
         
     }
     
@@ -27,7 +37,16 @@ public class TestCollection {
         Map<String,String> favoritos = new HashMap<>();
         
         favoritos.put("a", "abc");
-        favoritos.put("a", "abc");
+        favoritos.put("b", "pepes");
+        //si no existe el valor o es null se setea automaticamente
+        //si existe el valor se setea dependiendo el valor que regresa la validaccion de biFunction
+        //si mapper retorna null se elimina el valor de map
+        String result = favoritos.merge("a", "ac", mapper); 
+        String result2 = favoritos.merge("b","pepesito", mapper);
+
+        System.out.println(favoritos);// {a=abc, b=pepesito}
+        System.out.println(result);// abc
+        System.out.println(result2);// pepesito
     }
     
     //Map.putIfAbsent -> coloca el nuevo valor si no existe o si el valor es null
