@@ -13,7 +13,7 @@ public class TestSwitch {
             -String
             -valores enum
         No soporta boolean y long
-        las sentencias dentro de â€œcaseâ€? deben ser literales, constantes enum o variables constantes final
+        las sentencias dentro de case deben ser literales, constantes enum o variables constantes final
          */
 
     }

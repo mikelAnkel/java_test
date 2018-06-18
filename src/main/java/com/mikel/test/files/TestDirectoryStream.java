@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mikel.test.files;
 
 import java.io.IOException;
@@ -24,6 +20,7 @@ public class TestDirectoryStream {
         System.out.println("testing Directory Stream");
         Path path = Paths.get("C:\\Users\\Miguel\\");
         try(DirectoryStream<Path> stream = Files.newDirectoryStream(path)){
+            
             for (Path element : stream) {
                 System.out.println("file name->"+element.getFileName()+" is Directory ->"+Files.isDirectory(path));
             }

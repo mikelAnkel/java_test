@@ -26,8 +26,8 @@ new Executor
 |--------|                   |---------------|            |-----------|
 -Accept new Task              -Reject new Task            -Reject new Task
 -Execute Tasks                -Execute Tasks              -No task running
--isShutdown() = false         -isShutdown() = true        -isShutdown() = false
--isTerminated() = false       -isTerminated() = false     -isTerminated() = false
+-isShutdown() = false         -isShutdown() = true        -isShutdown() = true
+-isTerminated() = false       -isTerminated() = false     -isTerminated() = true
 
 
  */
@@ -47,7 +47,7 @@ public class TestSingleExecutor {
             
             //3 principales metodos para ejecutar un hilo   
             //service.execute(Runnable);
-            //service.submit(runnable)
+            //service.submit(Runnable)
             //service.submit(Callable<T>)
             
             service.execute(()->System.out.println("printing zoo inventory"));

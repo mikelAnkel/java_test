@@ -10,6 +10,6 @@ public class Main{
 
         TestFile myTest = new TestFile();
 
-        myTest.test();
+        //myTest.test();
     }
 }

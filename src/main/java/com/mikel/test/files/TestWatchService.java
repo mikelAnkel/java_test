@@ -62,6 +62,9 @@ public class TestWatchService {
                     System.out.println("[eventType=]"+kind+", Path="+path.getFileName());
                     
                     //remember ti always reset event key
+                    if(!key.reset()){
+                        break ;
+                    }
                 }
                 
                 
