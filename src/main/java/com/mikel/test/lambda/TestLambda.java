@@ -8,6 +8,7 @@ package com.mikel.test.lambda;
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
+import java.util.stream.Stream;
 
 /**
  *
@@ -34,5 +35,12 @@ public class TestLambda {
         System.out.println("ref 3"+ref4.test("hola"));
         
         List<String> algo;
+    }
+    
+    public void testLambaCollection(){
+        
+        Stream<String> algo = Stream.generate( () -> "miaw");
+        Predicate<String> predicate = s -> s.length() > 3;
+        boolean result = algo.allMatch( predicate);
     }
 }

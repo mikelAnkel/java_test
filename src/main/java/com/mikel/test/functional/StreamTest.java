@@ -7,6 +7,7 @@
 package com.mikel.test.functional;
 
 import java.util.Comparator;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,6 +31,15 @@ public class StreamTest {
         Optional<Integer> max = numeros.collect( Collectors.maxBy( Comparator.naturalOrder() ));
         
         
-        max.ifPresent(System.out::print);
+        max.ifPresent(System.out::println);//65 
+        testToMap();
+    }
+    
+    
+    private static void testToMap(){
+        Stream<String> ohmy = Stream.of("lions","trigers","bears");
+        Map<Integer,String> map = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;}));
+        
+        System.out.println(map);
     }
 }

@@ -60,7 +60,7 @@ public class TestCollection {
         System.out.println(favoritos);//{Tom=Tram,Jenny=a,Sam=Tram}
     }
     
-    //
+    //remove if ( predicate<> )
     public static void testRemoveIf(){
         
         List<String> lista = new ArrayList<>();

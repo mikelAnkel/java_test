@@ -33,6 +33,9 @@ public class TestCheckResult {
                 }
             });
             
+            //result.isDone();   //check if result is sucess
+            //result.isCancelled();
+            
             result.get(10, TimeUnit.SECONDS);
             System.out.println("reached");
             
