@@ -44,6 +44,7 @@ public class CyclicBarrierTest {
         ExecutorService service = null;
         try{
             service = Executors.newFixedThreadPool(4);
+            //se tiene que llamar el mismo numro de veces await para continuar (4)
              CyclicBarrierTest manager = new CyclicBarrierTest();
              CyclicBarrier barrier1 = new CyclicBarrier(4);
              CyclicBarrier barrier2 = new CyclicBarrier(4,()-> System.out.println("Clean complete !!"));

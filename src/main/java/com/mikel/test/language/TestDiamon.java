@@ -20,5 +20,6 @@ public class TestDiamon {
         
         List<Object> list= new ArrayList<Object>();
         List<Object> list2= new ArrayList<>();
+        List<Object> list3= new ArrayList();
     }
 }

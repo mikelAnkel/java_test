@@ -8,10 +8,12 @@ package com.mikel.test.language;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
+
 
 
 /**
@@ -29,7 +31,7 @@ public class TestDateFormat {
         DateFormat f = DateFormat.getDateInstance(DateFormat.FULL);
         
         Date d = new GregorianCalendar(2015, Calendar.JULY, 4).getTime();
-
+        
         System.out.println(s.format(d));//4/07/15
         System.out.println(m.format(d));//4/07/2015
         System.out.println(l.format(d));//4 de julio de 2015
