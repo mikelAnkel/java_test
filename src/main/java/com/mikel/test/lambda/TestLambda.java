@@ -34,5 +34,8 @@ public class TestLambda {
         System.out.println("ref 3"+ref4.test("hola"));
         
         List<String> algo;
+        
+        
     }
+    
 }

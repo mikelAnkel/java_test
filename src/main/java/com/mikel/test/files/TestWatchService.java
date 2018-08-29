@@ -40,7 +40,7 @@ public class TestWatchService {
                 WatchKey key;
                 try{
                     //take espera a que algo suceda dentro del directorio
-                    //poll no espera y continua, en un ciclo esto puede ser perjudicial
+                    //poll no espera y continua( retorna valores null ), en un ciclo esto puede ser perjudicial
                     key = service.take();
                 }
                 catch(InterruptedException ex){
