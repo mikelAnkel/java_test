@@ -49,6 +49,7 @@ public class TestSingleExecutor {
             //service.execute(Runnable);
             //service.submit(Runnable)
             //service.submit(Callable<T>)
+            //Runnable no es checked exception 
             
             service.execute(()->System.out.println("printing zoo inventory"));
             service.execute(()->

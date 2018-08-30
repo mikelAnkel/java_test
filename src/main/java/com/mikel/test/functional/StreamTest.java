@@ -9,6 +9,7 @@ package com.mikel.test.functional;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,7 +31,7 @@ public class StreamTest {
              
         numeros = Stream.of(5,34,5,3,6,2,65,54);
         Optional<Integer> max = numeros.collect( Collectors.maxBy( Comparator.naturalOrder() ));
-        
+
         max.ifPresent(System.out::print);
         System.out.println();
         System.out.println("---------------");
@@ -47,7 +48,17 @@ public class StreamTest {
         Optional<Integer> op =ls.stream().max( (a,b)->a-b);
         //manda error: NoSuchElementException, si no existe ningun valor
         System.err.println( op.get() );
+
+        max.ifPresent(System.out::println);//65 
+        testToMap();
+    }
+    
+    
+    private static void testToMap(){
+        Stream<String> ohmy = Stream.of("lions","trigers","bears");
+        Map<Integer,String> map = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;}));
         
+        System.out.println(map);
     }
     
     

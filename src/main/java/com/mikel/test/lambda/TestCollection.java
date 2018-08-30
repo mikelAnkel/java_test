@@ -68,8 +68,8 @@ public class TestCollection {
     }
     
     
-    
     //remueve elemento si predicate es true.
+    //remove if ( predicate<> )
     public static void testRemoveIf(){
         
         List<String> lista = new ArrayList<>();

@@ -2,6 +2,7 @@
 package com.mikel.test.files;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -16,9 +17,9 @@ public class TestDirectoryStream {
  
     public static void main(String[] args) {
         
-        //DirectoryStream: recorre un solo nivel si el Path es directorio
+        //DirectoryStream: recorre un solo nivel del directorio 
         System.out.println("testing Directory Stream");
-        Path path = Paths.get("C:\\Users\\Miguel\\");
+        Path path = Paths.get("C:\\Users\\Miguel\\");//java.nio.file.NotDirectoryException si es file
         try(DirectoryStream<Path> stream = Files.newDirectoryStream(path)){
             
             for (Path element : stream) {
@@ -28,14 +29,22 @@ public class TestDirectoryStream {
         
         //probando FileVisitor
         //Se usa para visitar todo un arbol de directorios 
+        //soporta 1 archivo como Path
+        //Se trunca el recorrido si existe algun error
         System.out.println("Testing FileVisitor");
         try {
-            Files.walk(Paths.get("C:\\Users\\Miguel\\Documents\\respaldo"), 2,FileVisitOption.FOLLOW_LINKS)
+            //Files.walk return Stream<Path>
+            Files.walk(Paths.get("C:\\Users\\Miguel\\Documents\\"), 2,FileVisitOption.FOLLOW_LINKS)
                     //.filter(p -> p.getFileName().endsWith("file"))
                     .forEach(p -> System.out.println("Found file: "+p.toAbsolutePath()));
-            
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } 
+        catch( UncheckedIOException ex){
+            System.out.println("Error ");
+           // ex.printStackTrace();
+        }
+        catch (IOException ex) {
+            System.out.println("Error ");
+            //ex.printStackTrace();
         }
     }                               
     

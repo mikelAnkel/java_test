@@ -22,7 +22,7 @@ import java.nio.file.WatchService;
 public class TestWatchService {
 
     /*
-        
+        java.nio.file.*
      */
     public static void main(String[] args) throws IOException {
 
@@ -32,7 +32,10 @@ public class TestWatchService {
             Path zooData = Paths.get("/user/home/zoo/data");
             Path zooLog = Paths.get("/user/home/zoo/log");
             
-            zooData.register(service, StandardWatchEventKinds.ENTRY_CREATE,StandardWatchEventKinds.ENTRY_DELETE,StandardWatchEventKinds.ENTRY_MODIFY);
+            zooData.register(service, StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_DELETE,
+                    StandardWatchEventKinds.ENTRY_MODIFY);
+            
             zooLog.register(service, StandardWatchEventKinds.ENTRY_MODIFY);
             
             

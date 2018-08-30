@@ -68,6 +68,9 @@ cierto intervalo de tiempo o periodicamente.
                     TestCheckResult.counter++;
                 }
             });
+   
+            //result.isDone();   //check if result is sucess
+            //result.isCancelled();
 
             result.get(10, TimeUnit.SECONDS);
             System.out.println("reached");
