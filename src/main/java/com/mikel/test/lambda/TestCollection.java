@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  *
@@ -24,6 +26,10 @@ public class TestCollection {
         //List:
         // replaceAll(UnaryOperator<E> o) // reemplaza todos los valores por otros nuevos
         //list.forEach(consumer<U> | BiConsumer<U,V>) //sirve para realizar accion a cada valor de la lista/map
+        
+        ConcurrentMap<String,Object> algo = new ConcurrentHashMap<>();
+        
+        
         
     }
     

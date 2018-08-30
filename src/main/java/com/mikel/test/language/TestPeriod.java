@@ -24,6 +24,8 @@ public class TestPeriod {
         
         //Periodo se usa para fechas 
         LocalDate date =  LocalDate.now();
+        LocalDate dateFormat =  LocalDate.parse("2015-01-01");
+        
         Period period = Period.ofMonths(1);
         
         Period.of(1,2,3);//anio , mes dia
@@ -51,6 +53,7 @@ public class TestPeriod {
         
         LocalTime one = LocalTime.of(5, 15);
         LocalTime two = LocalTime.of(6, 30);
+        LocalTime localTimeParsed =LocalTime.parse("10:15:30"); // thows java.time.DateTimeException extends RuntimeException
        
         System.out.println(ChronoUnit.HOURS.between(one, two));//1
         System.out.println(ChronoUnit.MINUTES.between(one, two));//75
