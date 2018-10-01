@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiFunction;
+import java.util.concurrent.ConcurrentMap;
 
 /**
  *
@@ -20,15 +22,25 @@ public class TestCollection {
     public static void main(String[] args) {
         
         testMerge();
+        
+        //List:
+        // replaceAll(UnaryOperator<E> o) // reemplaza todos los valores por otros nuevos
+        //list.forEach(consumer<U> | BiConsumer<U,V>) //sirve para realizar accion a cada valor de la lista/map
+        
+        ConcurrentMap<String,Object> algo = new ConcurrentHashMap<>();
+        
+        
+        
     }
     
     public static void computeIfPresent(){
         
         Map<String,Integer> couts = new HashMap<>();
-        //setea el valor que retorna  BiFunction, null si no aplica
-        couts.computeIfPresent("Jenny", (k,v)-> v+1);
-        //setea el valor que retorna Function, solo si key existe o es valor null
-        couts.computeIfAbsent("Tom", (k) -> 1);
+        //setea y retorna el valor del resultado de BiFunction , null si no existe key
+        Integer result = couts.computeIfPresent("Jenny", (k,v)-> v+1);
+        
+        
+        Integer result2 = couts.computeIfAbsent("Tom", (k) -> 1);
         
     }
     
@@ -49,7 +61,7 @@ public class TestCollection {
         System.out.println(result2);// pepesito
     }
     
-    //Map.putIfAbsent -> coloca el nuevo valor si no existe o si el valor es null
+    ////setea el valor que retorna Function y lo retorna, solo si key NO existe o si el valor es null
     public static void testMapPutIfAbsent(){
         Map<String,String> favoritos = new HashMap<>();
         favoritos.put("Jenny","a");
@@ -57,9 +69,12 @@ public class TestCollection {
         favoritos.putIfAbsent("Jenny","Tram");
         favoritos.putIfAbsent("Sam","Tram");
         favoritos.putIfAbsent("Tom","Tram");
+        
         System.out.println(favoritos);//{Tom=Tram,Jenny=a,Sam=Tram}
     }
     
+    
+    //remueve elemento si predicate es true.
     //remove if ( predicate<> )
     public static void testRemoveIf(){
         
@@ -68,6 +83,7 @@ public class TestCollection {
         lista.add("Armadura");
         System.out.println(lista);//[magia,armadura]
         lista.removeIf( s -> s.startsWith("A"));
+        
         System.out.println(lista);//[magia]
     }
 }

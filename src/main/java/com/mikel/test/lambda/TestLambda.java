@@ -36,14 +36,12 @@ public class TestLambda {
         System.out.println("ref 3"+ref4.test("hola"));
         
         List<String> algo;
-        
         Runnable r = TestLambda::new;
         System.out.println("test print runable");
         Runnable run = TestLambda::print2;
          run.run();
         
          Consumer<String> consumer =  TestLambda::testConsumer;
-        
     }
     //las lambas que retornan void soportan aquellos metodos que retornan  algun dato
     public static String testConsumer(String param) {

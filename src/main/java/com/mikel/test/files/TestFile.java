@@ -64,6 +64,10 @@ public class TestFile {
         } catch (IOException ex) {}
         
         try {
+            //Copy
+            // Copia archivos(resuelve links), carpetas(ignorando contenido),
+            //Defaulqueda en 
+            Files.copy(Paths.get(""), Paths.get("")); 
             //error si no se puede mover o archivos no encontrados
             //rescribe si son directorios al mismo nivel
             //
@@ -77,8 +81,15 @@ public class TestFile {
                     
         } catch (IOException ex) {}
         
-        
-        
+        try{
+            Files.walk(Paths.get("Path")).filter( p->p.toString().endsWith(".java")).forEach( System.out::print);
+            
+            
+        }
+        catch(Exception e){
+            
+        }
+
         
         
     }
