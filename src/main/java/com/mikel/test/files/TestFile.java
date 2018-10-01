@@ -26,7 +26,7 @@ public class TestFile {
         }
 
         //
-        Path newSubPath = path.subpath(1,3);
+        Path newSubPath = path.subpath(1,3);//inicia del indice 0
         System.out.println("subpaath->"+newSubPath); //Anzen\Documents
         //absolito-> debe de iniciar con  letra (ej: c:// , d://) o / 
         System.out.println("is Absolute->"+newSubPath.isAbsolute()); // false

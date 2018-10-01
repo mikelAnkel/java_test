@@ -7,6 +7,7 @@ package com.mikel.test.lambda;
 
 import java.util.List;
 import java.util.function.BiPredicate;
+import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -35,9 +36,35 @@ public class TestLambda {
         System.out.println("ref 3"+ref4.test("hola"));
         
         List<String> algo;
+        
+        Runnable r = TestLambda::new;
+        System.out.println("test print runable");
+        Runnable run = TestLambda::print2;
+         run.run();
+        
+         Consumer<String> consumer =  TestLambda::testConsumer;
+        
+    }
+    //las lambas que retornan void soportan aquellos metodos que retornan  algun dato
+    public static String testConsumer(String param) {
+        System.err.println("param");
+        return "";
     }
     
-    public void testLambaCollection(){
+    public static void print2() {
+        
+        System.out.println("print 2");
+    }
+    
+    public static Runnable print() {
+        
+        System.out.println("calling print here :v ");
+         return () -> {
+             System.out.println("Hi");
+         };
+     }
+    
+    public static void testLambaCollection(){
         
         Stream<String> algo = Stream.generate( () -> "miaw");
         Predicate<String> predicate = s -> s.length() > 3;

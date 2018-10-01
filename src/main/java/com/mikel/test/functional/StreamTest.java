@@ -33,6 +33,8 @@ public class StreamTest {
         
         max.ifPresent(System.out::println);//65 
         testToMap();
+        
+        
     }
     
     
