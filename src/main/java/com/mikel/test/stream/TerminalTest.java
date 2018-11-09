@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mikel.test.functional;
+package com.mikel.test.stream;
 
 import java.util.Optional;
 import java.util.stream.Stream;

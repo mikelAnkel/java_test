@@ -41,7 +41,7 @@ Leading period/dot characters in file name are treated as regular characters in 
 All other characters match themselves in an implementation dependent manner. This includes characters representing any name-separators.
 The matching of root components is highly implementation-dependent and is not specified.
 */
-
+    
         PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/testFile.?");
         
         Path path = Paths.get("D:/cp/testFile.t");

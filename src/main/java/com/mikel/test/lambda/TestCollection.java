@@ -61,7 +61,7 @@ public class TestCollection {
         System.out.println(result2);// pepesito
     }
     
-    ////setea el valor que retorna Function y lo retorna, solo si key NO existe o si el valor es null
+    ////setea el valor , solo si key NO existe o si el valor es null
     public static void testMapPutIfAbsent(){
         Map<String,String> favoritos = new HashMap<>();
         favoritos.put("Jenny","a");

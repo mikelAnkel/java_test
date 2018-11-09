@@ -1,8 +1,10 @@
 package com.mikel.test.files;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
+import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -68,7 +70,7 @@ public class TestFile {
             // Copia archivos(resuelve links), carpetas(ignorando contenido),
             //Defaulqueda en 
             Files.copy(Paths.get(""), Paths.get("")); 
-            //error si no se puede mover o archivos no encontrados
+            //error si no se puede copiar o archivos no encontrados
             //rescribe si son directorios al mismo nivel
             //
             Files.move(Paths.get(""), Paths.get("")); 
@@ -82,7 +84,9 @@ public class TestFile {
         } catch (IOException ex) {}
         
         try{
-            Files.walk(Paths.get("Path")).filter( p->p.toString().endsWith(".java")).forEach( System.out::print);
+            //depth-> cuantos niveles de directorio debe de leer, 0 indica el primer archivo es visitado
+            //por default no sige los links
+            Files.walk(Paths.get("Path"),10,FileVisitOption.FOLLOW_LINKS).filter( p->p.toString().endsWith(".java")).forEach( System.out::print);
             
             
         }
@@ -90,6 +94,12 @@ public class TestFile {
             
         }
 
+        // uso de File System.
+        Iterable<Path> roots = FileSystems.getDefault().getRootDirectories();
+        for(Path p : roots){ 
+            System.out.println(p); 
+        }
+        File.listRoots();
         
         
     }

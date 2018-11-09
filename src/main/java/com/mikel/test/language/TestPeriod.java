@@ -25,7 +25,7 @@ public class TestPeriod {
         
         //Periodo se usa para fechas 
         LocalDate date =  LocalDate.now();
-
+        System.out.println(date);//2018-10-26
         LocalDate dateTest = LocalDate.parse("2007-12-03");
 
         LocalDate dateFormat =  LocalDate.parse("2015-01-01");
