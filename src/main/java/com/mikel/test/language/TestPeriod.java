@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -24,7 +25,11 @@ public class TestPeriod {
         
         //Periodo se usa para fechas 
         LocalDate date =  LocalDate.now();
+        System.out.println(date);//2018-10-26
+        LocalDate dateTest = LocalDate.parse("2007-12-03");
+
         LocalDate dateFormat =  LocalDate.parse("2015-01-01");
+
         
         Period period = Period.ofMonths(1);
         

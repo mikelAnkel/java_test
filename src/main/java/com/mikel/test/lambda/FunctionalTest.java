@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mikel.test.functional;
+package com.mikel.test.lambda;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

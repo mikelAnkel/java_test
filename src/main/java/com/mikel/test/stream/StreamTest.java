@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mikel.test.functional;
+package com.mikel.test.stream;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -51,6 +51,8 @@ public class StreamTest {
 
         max.ifPresent(System.out::println);//65 
         testToMap();
+        
+        
     }
     
     
