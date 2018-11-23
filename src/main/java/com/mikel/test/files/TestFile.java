@@ -8,6 +8,7 @@ import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -45,7 +46,21 @@ public class TestFile {
         //resolve 
         //path1.resolve(path2)
         //regresa un nuevo path uniendo a los 2 paths, solo si es relativo
-        //retorna path2 si los paths son absolutos
+        //retorna path2 si los paths son absolutos (?)
+        System.out.println("Resolve---");
+        Path doc1 = Paths.get("C:\\Program Files");
+        Path doc2 = Paths.get("otro_folder/test.sd");
+        Path doc3 = Paths.get("folder/other.sdf");
+        
+        //C:\Users\Anzen\Documents\git\java_test\test
+        
+        System.out.println(doc1.resolve(doc2));//abs+rel = abs/rel
+        System.out.println(doc2.resolve(doc1));////rel+abs = abs
+        System.out.println(doc2.toAbsolutePath().resolve(doc1));//abs1+abs2 = abs2
+        System.out.println(doc1.resolve(doc2.toAbsolutePath()));//abs2+abs1 = abs2
+        System.out.println(doc2.resolve(doc3));//rel+rel = rel/rel
+        System.out.println(doc3.resolve(doc2));//rel+rel = rel/rel
+        System.out.println("end ---");
         
         //normalize
         path.normalize();
@@ -59,7 +74,7 @@ public class TestFile {
         
         
         try {
-            //crea directorio, si el directorio padre no existe, o directorio existente ejecuta error
+            //crea directorio,error si padre no existe, o directorio existente 
             Files.createDirectory(path);
             //crea la serie de directorios, si existe ejecuta error
             Files.createDirectories(path);
@@ -68,11 +83,10 @@ public class TestFile {
         try {
             //Copy
             // Copia archivos(resuelve links), carpetas(ignorando contenido),
-            //Defaulqueda en 
             Files.copy(Paths.get(""), Paths.get("")); 
+            
             //error si no se puede copiar o archivos no encontrados
             //rescribe si son directorios al mismo nivel
-            //
             Files.move(Paths.get(""), Paths.get("")); 
             
             //error si no existe, no se elimina o tiene subdirectorios/archos
@@ -83,23 +97,16 @@ public class TestFile {
                     
         } catch (IOException ex) {}
         
-        try{
-            //depth-> cuantos niveles de directorio debe de leer, 0 indica el primer archivo es visitado
-            //por default no sige los links
-            Files.walk(Paths.get("Path"),10,FileVisitOption.FOLLOW_LINKS).filter( p->p.toString().endsWith(".java")).forEach( System.out::print);
-            
-            
-        }
-        catch(Exception e){
-            
-        }
 
         // uso de File System.
+        //obtiene todos los Paths de Root
         Iterable<Path> roots = FileSystems.getDefault().getRootDirectories();
         for(Path p : roots){ 
             System.out.println(p); 
         }
-        File.listRoots();
+        //obtiene todos los archivos de root
+        File.listRoots(); // return File[]
+        
         
         
     }

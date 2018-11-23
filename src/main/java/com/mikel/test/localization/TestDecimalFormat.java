@@ -1,5 +1,5 @@
 
-package com.mikel.test.language;
+package com.mikel.test.localization;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;

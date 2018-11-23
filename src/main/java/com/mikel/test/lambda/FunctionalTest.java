@@ -96,6 +96,7 @@ public class FunctionalTest {
         BiFunction<String,String,String> bf2 = (string,toAdd) -> string.concat(toAdd);
         System.out.println(bf1.apply("baby","chick"));;//baby chick
         System.out.println(bf2.apply("baby","chick"));;//baby chick
-        
+     
+        //Integer.divideUnsigned(0, 0);
     }
 }

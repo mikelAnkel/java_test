@@ -36,7 +36,7 @@ public class TestLiterales {
          //double a = _1000.00; 
          //double b = 1000.00_; 
          //double c = 1000_.00;
-         double d = 1_00_0.0_0; //compila
+         double d = 1_00__0.0_0; //compila
          
          
     }

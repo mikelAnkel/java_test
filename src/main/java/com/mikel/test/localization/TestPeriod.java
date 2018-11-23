@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mikel.test.language;
+package com.mikel.test.localization;
 
 import java.time.Duration;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.Month;
 import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 
 /**
@@ -25,6 +26,7 @@ public class TestPeriod {
         
         //Periodo se usa para fechas 
         LocalDate date =  LocalDate.now();
+        
         System.out.println(date);//2018-10-26
         LocalDate dateTest = LocalDate.parse("2007-12-03");
 
@@ -45,6 +47,7 @@ public class TestPeriod {
         Duration everyMilli = Duration.ofMillis(1);         // PT0.001S 
         Duration everyNano = Duration.ofNanos(1);           // PT0.000000001S
         
+        System.out.println("2 dias :"+Duration.ofDays(2));
         
        LocalDate date1 = LocalDate.of(2015,1,20);
        LocalTime time1 = LocalTime.of(6, 15);
@@ -53,17 +56,26 @@ public class TestPeriod {
        
         System.out.println( date.plus(period1));// ok
         System.out.println( dateTime.plus(period1)); //ok
-        System.out.println( time1.plus(period1)); // UnsopportedTemporalTypeException
+        //System.out.println( time1.plus(period1)); // UnsopportedTemporalTypeException
         
         
         LocalTime one = LocalTime.of(5, 15);
         LocalTime two = LocalTime.of(6, 30);
-        LocalTime localTimeParsed =LocalTime.parse("10:15:30"); // thows java.time.DateTimeException extends RuntimeException
+        LocalTime localTimeParsed_1 =LocalTime.parse("10:15:30"); 
+        //LocalTime localTimeParsed_2 =LocalTime.parse("25:15.30"); // could not be parsed: Invalid value for HourOfDay 
        
         System.out.println(ChronoUnit.HOURS.between(one, two));//1
         System.out.println(ChronoUnit.MINUTES.between(one, two));//75
-        System.out.println(ChronoUnit.HOURS.between(one, two));//DateTimeException
+        //java.time.temporal.UnsupportedTemporalTypeException
+        //System.out.println(ChronoUnit.DAYS.between(one, two));
         
+        Instant now = Instant.now();
+        System.out.println(now);//2015-05-25T15:15:00Z
+        
+        ZoneId zoneId = ZoneId.of("US/Eastern");
+        ZonedDateTime zoned = ZonedDateTime.now(zoneId);
+        zoned.toInstant();//convert to Instant
+        //LocalDateTime,LocalDate no support convert to Instant.
         
        
 
