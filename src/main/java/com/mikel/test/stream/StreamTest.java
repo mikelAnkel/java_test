@@ -11,6 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -58,10 +59,31 @@ public class StreamTest {
     
     private static void testToMap(){
         Stream<String> ohmy = Stream.of("lions","trigers","bears");
-        Map<Integer,String> map = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;}));
+        //simple
+        //Error: IllegateStateException : Duplicate keys
+        Map<Integer,String> map1 = ohmy.collect(Collectors.toMap(String::length, k->k));
         
-        System.out.println(map);
+        //complex (Key Value, value, en caso de key duplicada que hacer con los 3 valores)
+        Map<Integer,String> map2 = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;}));
+        
+        TreeMap<Integer,String> map3 = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;},TreeMap::new));
     }
     
+    private static void testGropingBy(){
+        //test Stream To Map simple 
+        Stream<String> ohmy = Stream.of("lions","trigers","bears");
+        Map<Integer, List<String> > map = ohmy.collect(Collectors.groupingBy(String::length));
+        //map: {5=[Lion,bears], 6=[trigers]}
+        
+        
+        //test partitioning
+        Stream<String> ohmy1 = Stream.of("lions","trigers","bears");
+        Map<Boolean, List<String> > map1 = ohmy.collect(Collectors.partitioningBy(s -> s.length()>7));
+        //{false:[], true :[lions,trigers,bears] }
+        
+        
+        
+       
+    }
     
 }

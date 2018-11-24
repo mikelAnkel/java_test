@@ -51,7 +51,7 @@ public class TestCollection {
         favoritos.put("a", "abc");
         favoritos.put("b", "pepes");
         //si no existe el valor o es null se setea automaticamente
-        //si existe el valor se setea dependiendo el valor que regresa la validaccion de biFunction
+         //si existe el valor se setea dependiendo el valor que regresa la validaccion de biFunction
         //si mapper retorna null se elimina el valor de map
         String result = favoritos.merge("a", "ac", mapper); 
         String result2 = favoritos.merge("b","pepesito", mapper);
