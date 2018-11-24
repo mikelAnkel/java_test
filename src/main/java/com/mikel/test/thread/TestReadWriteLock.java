@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mikel.test.language;
+package com.mikel.test.thread;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,11 @@ public class TestReadWriteLock {
         }
     }
 }
+/*
 
+
+
+*/
 class ZooEmployeeNameManager {
 
     private ReadWriteLock readWriteLock = new ReentrantReadWriteLock();

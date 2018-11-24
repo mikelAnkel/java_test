@@ -3,11 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mikel.test.language;
+package com.mikel.test.localization;
 
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -25,6 +30,40 @@ public class TestDateFormat {
     
     public static void main(String[] args) {
         
+        //LocalDate: no time, no timeZone
+        //LocalTime: no date no timeZone
+        //LocalDateTime: no timeZone
+        //ZonedDateTime: contains date,time and timezone
+        
+        //year, month(1-12), dayofMonth(1-31)
+        LocalDate.of(1990, 1, 1);
+        
+        //year, enum Month, dayofMonth(1-31)
+        LocalDate.of(1990, Month.JANUARY, 1);
+        
+        Integer hour = 0;
+        Integer minute = 1;
+        Integer second = 1;
+        Integer nanos = 1;
+        LocalTime.of(hour, minute);
+        LocalTime.of(hour, minute,second);
+        LocalTime.of(hour, minute,second,nanos);
+        
+        
+        //inicializaciones
+        LocalDateTime dateTime1 = LocalDateTime.of(2015, Month.MARCH, 6, 12, 30);
+        LocalDateTime dateTime2 = LocalDateTime.of( LocalDate.of(1990, 1, 1),  LocalTime.of(hour, minute));
+        
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate);// 2018-01-20
+        //las operaciones retornan un nuevo LocalDate
+        localDate = localDate.plusDays(0);
+        localDate = localDate.plusMonths(0);
+        localDate =localDate.plusWeeks(0);
+        localDate = localDate.plusYears(0);
+        
+        //DateFormat
+        //da formato a fechas con formatos predetermnados
         DateFormat s = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat m = DateFormat.getDateInstance(DateFormat.MEDIUM);
         DateFormat l = DateFormat.getDateInstance(DateFormat.LONG);
@@ -46,6 +85,12 @@ public class TestDateFormat {
         System.out.println( dtf2.format(d) );//sábado 4 de julio de 2015 12:00:00 AM CDT
         System.out.println( dtf3.format(d) );//04.07.2015 00:00 Uhr CDT
         
+        
+        
+        //Solo acepta de tipo Date
+        //IllegalArgumentException: Cannot format given Object as a Date
+        System.out.println( dtf3.format( LocalTime.now() ) );
+        
         //Custom date Format
         //M -> Mes  | M -> 1  | MM -> 01   | MMM -> Jan   | MMMM -> January
         //d -> Dia
@@ -56,6 +101,8 @@ public class TestDateFormat {
         //m -> minuto
         //s -> Segundo
         
+        //SimpleDateFormat
+        //da formato a fechas con formato personalizado
         SimpleDateFormat f1 = new SimpleDateFormat("MM dd yyyy hh:mm:ss");
         SimpleDateFormat f2 = new SimpleDateFormat("MMMM yyyy");
         SimpleDateFormat f3 = new SimpleDateFormat("h");
@@ -72,6 +119,14 @@ public class TestDateFormat {
          ex.printStackTrace();
         }
         
+        System.out.println("test DateTimeFormatter");
+        
+        DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yy/mm/dd");
+        LocalDateTime ldt = LocalDateTime.of(2015,10,10,11,22);
+        LocalTime algo = LocalTime.now();
+        System.out.println(dtf1.format( ldt ));
+        
+        //
     }
 }
 

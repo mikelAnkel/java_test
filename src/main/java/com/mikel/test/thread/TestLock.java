@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.mikel.test.language;
+package com.mikel.test.thread;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;

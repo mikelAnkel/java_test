@@ -26,6 +26,7 @@ public class TestWatchService {
      */
     public static void main(String[] args) throws IOException {
 
+        
         try (WatchService service = FileSystems.getDefault().newWatchService();) {
             
             //registro de eventos

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mikel.test.lambda;
+package com.mikel.test.collections;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,7 +82,7 @@ public class TestCollection {
         lista.add("Magia");
         lista.add("Armadura");
         System.out.println(lista);//[magia,armadura]
-        lista.removeIf( s -> s.startsWith("A"));
+        boolean sucess = lista.removeIf( s -> s.startsWith("A"));
         
         System.out.println(lista);//[magia]
     }
