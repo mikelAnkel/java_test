@@ -59,8 +59,7 @@ public class TestSingleExecutor {
             //Runnable no es checked exception 
             //service.execute(Runnable);
             //service.submit(Runnable)
-            //service.submit(Callable<T>)
-            
+            //  Future<T> service.submit(Callable<T>)
             
             
             //ejecuta todos los hilos callable, todos deben de terminar para continuar (?)
