@@ -8,6 +8,7 @@ package com.mikel.test.files;
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.FileVisitor;
+import java.nio.file.SimpleFileVisitor;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,9 +22,14 @@ import java.nio.file.attribute.BasicFileAttributes;
 public class TestFileVisitor {
 
     public static void main(String[] args) throws Exception {
-
+        //Path, Set<FileVisitOption> deph, classVisitor
+        //Files.walkFileTree(start, options, 0, visitor)
+        //not follow symbolic links by default
+        //soporta 1 archivo (?)
+        ///si depth es 0 solo visita el primer archivo o folder
         Files.walkFileTree(Paths.get("C:\\Users\\Anzen\\Documents\\framework\\test"), new FindAndCopyFile());
 
+        //SimpleFileVisitor lanza exception y detiene el proceso en el arbol llamando visitFileFailed
     }
 
 }
