@@ -61,6 +61,8 @@ public class TestSingleExecutor {
             //service.submit(Runnable)
             //  Future<T> service.submit(Callable<T>)
             
+            Callable c = null;
+            //c.call();
             
             //ejecuta todos los hilos callable, todos deben de terminar para continuar (?)
             //List<Future<T>>  service.invokeAll(Collection<? extends Callable<T>> tasks);

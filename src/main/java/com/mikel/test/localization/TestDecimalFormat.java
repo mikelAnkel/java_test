@@ -22,11 +22,12 @@ public class TestDecimalFormat {
         DecimalFormat uno = new DecimalFormat("###,###,###.###");
         DecimalFormat dos = new DecimalFormat("000,000,000.00000");
         DecimalFormat tres = new DecimalFormat("$###,###.##");
-        
+        DecimalFormat cuatro = new DecimalFormat("#,####.##");
+        NumberFormat algo = new DecimalFormat("##,##.000");
         System.out.println( uno.format(d) );//1,234,567.437
         System.out.println( dos.format(d) );//001,234,567.43700
         System.out.println( tres.format(d) );//$1,234,567.44 <-- si se truncan digitos se redondea !!
-        
+        System.out.println( cuatro.format(d) );//123,4567.44 <-- no elimina el inicio
         
     }
 }

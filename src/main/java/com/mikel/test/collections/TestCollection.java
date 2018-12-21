@@ -29,18 +29,22 @@ public class TestCollection {
         
         ConcurrentMap<String,Object> algo = new ConcurrentHashMap<>();
         
-        
+            
         
     }
     
     public static void computeIfPresent(){
         
         Map<String,Integer> couts = new HashMap<>();
-        //setea y retorna el valor del resultado de BiFunction , null si no existe key
+        //setea y retorna el valor del resultado de BiFunction , 
+        //si function retorna null se elimina em campo
         Integer result = couts.computeIfPresent("Jenny", (k,v)-> v+1);
-        
-        
+        //guarda nuevo valor si no existe key, si function retorna null
+        //no actualiza valor
         Integer result2 = couts.computeIfAbsent("Tom", (k) -> 1);
+        
+        //combinacion de compute if present y compute if absent
+        couts.compute("key", (k,v)->v+1);
         
     }
     

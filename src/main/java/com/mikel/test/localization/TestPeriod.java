@@ -10,6 +10,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Month;
 import java.time.Period;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -34,6 +35,7 @@ public class TestPeriod {
 
         
         Period period = Period.ofMonths(1);
+        System.out.println( Period.of(0, 20, 47));//P20M47D
         
         Period.of(1,2,3);//anio , mes dia
         //P1Y2M3D
@@ -66,9 +68,16 @@ public class TestPeriod {
        
         System.out.println(ChronoUnit.HOURS.between(one, two));//1
         System.out.println(ChronoUnit.MINUTES.between(one, two));//75
+        System.out.println(ChronoUnit.HOURS.between(two, one));//-1
+        System.out.println( Duration.between(two, one));//PT-1H-15M
+        
         //java.time.temporal.UnsupportedTemporalTypeException
         //System.out.println(ChronoUnit.DAYS.between(one, two));
         
+        Period p = Period.between(LocalDate.now(), LocalDate.of(2015, Month.SEPTEMBER, 1));
+        System.out.println("perdiod->"+p);//P-3Y-3M-5D es negativo
+         
+        //instant: un punto en el tiempo en GTM zone
         Instant now = Instant.now();
         System.out.println(now);//2015-05-25T15:15:00Z
         
@@ -77,7 +86,12 @@ public class TestPeriod {
         zoned.toInstant();//convert to Instant
         //LocalDateTime,LocalDate no support convert to Instant.
         
+       String m1 = Duration.of(1, ChronoUnit.MINUTES).toString();
+       String m2 = Duration.ofMinutes(1).toString();
        
+        System.out.println("m1->"+m1);
+        System.out.println("m2->"+m2);
+        System.out.println("equals ?->"+(m1 == m2));
 
 
     }

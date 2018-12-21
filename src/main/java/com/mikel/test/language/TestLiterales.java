@@ -39,5 +39,6 @@ public class TestLiterales {
          double d = 1_00__0.0_0; //compila
          
          
+         
     }
 }

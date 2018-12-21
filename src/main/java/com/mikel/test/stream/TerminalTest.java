@@ -5,7 +5,14 @@
  */
 package com.mikel.test.stream;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BinaryOperator;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -26,8 +33,37 @@ public class TerminalTest {
             return (s1.length() - s2.length());
         });
         min.ifPresent(System.out::println);//ape
+
+        List<String> al = Arrays.asList("aa", "aaa", "b", "cc", "ccc", "ddd", "a");
         
+        float count = al.stream().filter((str) -> str.compareTo("c") < 0).count();//Count retorna Long
+
         
+        //lISTA DE METODOS TERMINALES
+        //<R, A> R collect(Collector<? super T, A, R> collector);
+        //<R> R collect(Supplier<R> supplier,BiConsumer<R, ? super T> accumulator,
+        //                  BiConsumer<R, R> combiner);
+        //long count();
+        //T reduce(T identity, BinaryOperator<T> accumulator);
+        //Optional<T> reduce(BinaryOperator<T> accumulator);
+        //<U> U reduce(U identity,
+        //                BiFunction<U, ? super T, U> accumulator,
+        //                BinaryOperator<U> combiner);
+        //void forEach(Consumer<? super T> action);
+        //void forEachOrdered(Consumer<? super T> action);
+        //Optional<T> min(Comparator<? super T> comparator);
+        //Optional<T> max(Comparator<? super T> comparator);
+        //boolean anyMatch(Predicate<? super T> predicate);
+        //boolean allMatch(Predicate<? super T> predicate);
+        //boolean noneMatch(Predicate<? super T> predicate);
+        //Optional<T> findAny();
+        //Optional<T> findFirst();
+        
+        //Considerados reduccion
+        //Collect()
+        //count()
+        //min()/max() 
+        //reduce
     }
 
 }

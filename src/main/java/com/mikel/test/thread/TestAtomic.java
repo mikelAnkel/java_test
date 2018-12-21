@@ -45,6 +45,13 @@ public class TestAtomic {
         ai.getAndIncrement();//value++
         ai.decrementAndGet();//--value
         ai.getAndDecrement();//value--
+        ai.addAndGet(0);//agrega y retorna
+        //actualiza solo si expected es igual al valor actual de la clase
+        ai.compareAndSet(1, 10);//expected,updated
+        
+        ai.getAndAdd(0);
+        
+        
         
         
       

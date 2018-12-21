@@ -29,6 +29,11 @@ public class StreamTest {
         Stream<Integer>  numeros = Stream.of(5,34,5,3,6,2,65,54);
         long cuenta  = numeros.collect(Collectors.counting());
         System.out.println("cuenta->"+cuenta);        
+        
+        Stream<Integer>  average = Stream.empty();
+        Double result = average.collect(Collectors.averagingInt(i->i));
+        
+        System.out.println("result->"+result);
              
         numeros = Stream.of(5,34,5,3,6,2,65,54);
         Optional<Integer> max = numeros.collect( Collectors.maxBy( Comparator.naturalOrder() ));
@@ -53,7 +58,8 @@ public class StreamTest {
         max.ifPresent(System.out::println);//65 
         testToMap();
         
-        
+        ls.stream().sorted();//natural orden
+        ls.stream().sorted(Comparator.naturalOrder());//comparator
     }
     
     
@@ -64,7 +70,13 @@ public class StreamTest {
         Map<Integer,String> map1 = ohmy.collect(Collectors.toMap(String::length, k->k));
         
         //complex (Key Value, value, en caso de key duplicada que hacer con los 3 valores)
-        Map<Integer,String> map2 = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;}));
+        Map<Integer,String> map2 = ohmy.collect(
+                Collectors.toMap(String::length, k->k,
+                        (k,s)->{
+                            System.out.println("k->"+k+"|s:"+s);
+                            return k+"|"+s;
+                        }
+                ));
         
         TreeMap<Integer,String> map3 = ohmy.collect(Collectors.toMap(String::length, k->k, (k,s)->{System.out.println("k->"+k+"|s:"+s);return k+"|"+s;},TreeMap::new));
     }

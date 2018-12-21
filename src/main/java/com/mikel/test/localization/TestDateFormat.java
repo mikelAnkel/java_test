@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -26,9 +27,17 @@ import java.util.Locale;
  * @author Miguel
  */
 public class TestDateFormat {
+    /*
+        DateFormat usa Date
     
+        DateTimeFormatter usa LocalTime,LocalDate,LocalDateTime
+    
+    */
     
     public static void main(String[] args) {
+        
+        
+        Date calendar = Calendar.getInstance(Locale.US).getTime();
         
         //LocalDate: no time, no timeZone
         //LocalTime: no date no timeZone
@@ -51,8 +60,10 @@ public class TestDateFormat {
         
         
         //inicializaciones
+        //DateTimeException -> RuntimeException
         LocalDateTime dateTime1 = LocalDateTime.of(2015, Month.MARCH, 6, 12, 30);
         LocalDateTime dateTime2 = LocalDateTime.of( LocalDate.of(1990, 1, 1),  LocalTime.of(hour, minute));
+        //LocalDateTime dateTime3 = LocalDateTime.parse("2015-01-01 2:00:00");
         
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);// 2018-01-20
@@ -62,7 +73,7 @@ public class TestDateFormat {
         localDate =localDate.plusWeeks(0);
         localDate = localDate.plusYears(0);
         
-        //DateFormat
+        //DateFormat -------------------------------------------------
         //da formato a fechas con formatos predetermnados
         DateFormat s = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat m = DateFormat.getDateInstance(DateFormat.MEDIUM);
@@ -89,7 +100,7 @@ public class TestDateFormat {
         
         //Solo acepta de tipo Date
         //IllegalArgumentException: Cannot format given Object as a Date
-        System.out.println( dtf3.format( LocalTime.now() ) );
+        //System.out.println( dtf3.format( LocalTime.now() ) );
         
         //Custom date Format
         //M -> Mes  | M -> 1  | MM -> 01   | MMM -> Jan   | MMMM -> January
@@ -101,7 +112,8 @@ public class TestDateFormat {
         //m -> minuto
         //s -> Segundo
         
-        //SimpleDateFormat
+        //SimpleDateFormat   --------------------------------------------
+        //acepta tipo Date
         //da formato a fechas con formato personalizado
         SimpleDateFormat f1 = new SimpleDateFormat("MM dd yyyy hh:mm:ss");
         SimpleDateFormat f2 = new SimpleDateFormat("MMMM yyyy");
@@ -119,14 +131,42 @@ public class TestDateFormat {
          ex.printStackTrace();
         }
         
-        System.out.println("test DateTimeFormatter");
+        //DateTimeFormatter ---------------- no soporta de tipo Date
         
+        //dar formato con las mismas clases de localDate,LocalTime,LocalDateTime
+        //con ayuda de DateTimeFormatter
+        //LocalTime
+        //DateTimeFormatter.ISO_TIME;
+        
+        //locaDate
+        //DateTimeFormatter.ISO_DATE;
+        
+        LocalDateTime dateTime = LocalDateTime.now();
+        String dateTimeFormated = dateTime.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+        
+        //dar formato con DateTimeFormatter
+        DateTimeFormatter formatter1 = DateTimeFormatter.ofLocalizedTime(FormatStyle.SHORT);
+        DateTimeFormatter formatter2 = DateTimeFormatter.ofLocalizedDate(FormatStyle.SHORT);
+        DateTimeFormatter formatter3 = DateTimeFormatter.ofLocalizedDateTime(FormatStyle.SHORT);
+        
+        formatter1.format(dateTime);
+        //ofLocalizedDateTime solo soporta dar formato a LocalDateTime y ZoneDateTime
+        //..Date no soporta dar formato a LocalTime
+        //..Time no soporta dar formato a LocalDate
+        
+        //
+        System.out.println("test DateTimeFormatter");
+        DateTimeFormatter dtf1_loc = DateTimeFormatter.ofPattern("yy/mm/dd",Locale.ENGLISH);
         DateTimeFormatter dtf1 = DateTimeFormatter.ofPattern("yy/mm/dd");
         LocalDateTime ldt = LocalDateTime.of(2015,10,10,11,22);
         LocalTime algo = LocalTime.now();
         System.out.println(dtf1.format( ldt ));
-        
+        //UnsupportedTemporalTypeException: Unsupported field: DayOfMonth
+        //String ltf = algo.format( DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
+        String ltf = algo.format( DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM));
+        System.out.println("localTimeFormat->"+ltf);
         //
+            
     }
 }
 

@@ -98,5 +98,29 @@ public class FunctionalTest {
         System.out.println(bf2.apply("baby","chick"));;//baby chick
      
         //Integer.divideUnsigned(0, 0);
+        
+        testFunction();
+    }
+    
+    public static void testFunction(){
+         double principle = 100;
+         int interestrate = 5;
+         Double amount = compute3(principle, x->x*interestrate);
+         System.out.println("TestFunction:"+amount);
+    }
+    //return 500
+    public static double compute(double base, Function<Integer,Integer> func){ 
+        int algo = func.apply((int)base);
+        return algo;
+    }
+    
+    public static Double compute2(double base, Function<Integer,Double>func){
+        Double algo = func.apply((int)base);
+        return algo;
+    }
+    
+    public static Double compute3(double base, Function<Double,Double>func){
+        Double algo = func.apply(base);
+        return algo;
     }
 }

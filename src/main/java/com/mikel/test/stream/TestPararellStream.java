@@ -36,6 +36,7 @@ public class TestPararellStream {
 
         int total = IntStream.of(1, 2, 3, 4, 5, 6)
                 .parallel()
+                
                 .reduce(0, (sum, n) -> sum + n);
 
         System.out.println("total->" + total);
@@ -51,5 +52,7 @@ public class TestPararellStream {
                         }); //combiner
 
         System.out.println("result>" + length);
+        
+        
     }
 }

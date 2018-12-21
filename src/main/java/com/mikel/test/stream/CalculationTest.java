@@ -7,6 +7,9 @@ package com.mikel.test.stream;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
@@ -45,6 +48,9 @@ public class CalculationTest {
 //        OptionalDouble min()
 //        double sum()
 
-
+        IntStream is = IntStream.rangeClosed(1, 4);
+        OptionalInt sum = is.reduce((a, b)->a+b);
+        int suma = is.reduce(0,(a, b)->a+b);
+        System.out.println(sum.getAsInt());
     }
 }
