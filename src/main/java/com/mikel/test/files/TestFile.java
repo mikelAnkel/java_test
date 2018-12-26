@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
@@ -86,7 +85,12 @@ public class TestFile {
         System.out.println(doc2.resolve(doc3));//rel+rel = rel/rel
         System.out.println(doc3.resolve(doc2));//rel+rel = rel/rel
         System.out.println("end ---");
-
+        Path pa1 = Paths.get("photos\\..\\beaches\\.\\calangute\\a.txt");
+        Path pa2 = p1.normalize();
+        
+        System.out.println("pa--"+pa1);
+        System.out.println("pa--"+pa2);
+        
         //normalize
         path.normalize();
         //limpia un path,  elimina . ../, 
@@ -98,6 +102,7 @@ public class TestFile {
         //->foo//bar -> /foo/bar
 
         try {
+            //throws IOException
             //crea directorio,error si padre no existe, o directorio no existe 
             Files.createDirectory(path);
             //crea la serie de directorios, si existe ejecuta error
@@ -122,7 +127,7 @@ public class TestFile {
             Files.delete(path);
 
             //si no existe retorna false, error si tiene subdirectorios/archivos
-            Files.deleteIfExists(path);
+            boolean bol = Files.deleteIfExists(path);
 
         } catch (IOException ex) {
         }

@@ -106,11 +106,15 @@ public class TestDateFormat {
         //M -> Mes  | M -> 1  | MM -> 01   | MMM -> Jan   | MMMM -> January
         //d -> Dia
         //d -> 1  | dd ->01
+        //D ->1 365 dia del año
         //y- Año
         //yy -> 90  | YYYY -> 1990
         //h -> hora
+        //H ->Hora en dia de 0-23
         //m -> minuto
         //s -> Segundo
+        //S ->milisegundos
+        //z ->Time zone
         
         //SimpleDateFormat   --------------------------------------------
         //acepta tipo Date

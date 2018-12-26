@@ -22,7 +22,7 @@ public class CalculationTest {
     public static void main(String[] args) {
         
         List<Integer> numeros = Arrays.asList(1,2,3,4,5,6);
-        
+        IntStream.of(1,2,3);//no soportan list
         numeros.stream().count(); //long count()
         //Optional<T> max(Comparator<? super T> comparator)
         //Optional<T> min(Comparator<? super T> comparator)

@@ -28,19 +28,27 @@ public class TestCollection {
         //list.forEach(consumer<U> | BiConsumer<U,V>) //sirve para realizar accion a cada valor de la lista/map
         
         ConcurrentMap<String,Object> algo = new ConcurrentHashMap<>();
+        algo.getOrDefault("k", "default");
+        algo.replace("k", algo);
+        //reemplaza solo si old value es el mismo que está registrado
+        algo.replace("k","old","new");
         
-            
         
     }
     
     public static void computeIfPresent(){
         
         Map<String,Integer> couts = new HashMap<>();
+        
         //setea y retorna el valor del resultado de BiFunction , 
-        //si function retorna null se elimina em campo
+        //si function retorna null se elimina del campo
+        //si no existe key retorna null
+        //k-> key, v -> oldValue, return new Value
         Integer result = couts.computeIfPresent("Jenny", (k,v)-> v+1);
-        //guarda nuevo valor si no existe key, si function retorna null
-        //no actualiza valor
+        
+        //guarda nuevo valor si no existe key,
+        // si function retorna null no actualiza valor
+        //k-> key
         Integer result2 = couts.computeIfAbsent("Tom", (k) -> 1);
         
         //combinacion de compute if present y compute if absent
@@ -57,6 +65,7 @@ public class TestCollection {
         //si no existe el valor o es null se setea automaticamente
          //si existe el valor se setea dependiendo el valor que regresa la validaccion de biFunction
         //si mapper retorna null se elimina el valor de map
+        //(k,v,BiFunction)
         String result = favoritos.merge("a", "ac", mapper); 
         String result2 = favoritos.merge("b","pepesito", mapper);
 

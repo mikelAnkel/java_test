@@ -92,10 +92,13 @@ public class StreamTest {
         Stream<String> ohmy1 = Stream.of("lions","trigers","bears");
         Map<Boolean, List<String> > map1 = ohmy.collect(Collectors.partitioningBy(s -> s.length()>7));
         //{false:[], true :[lions,trigers,bears] }
-        
-        
-        
+    }
+    
+    private static void testCollection(){
+       Stream<String> ohmy = Stream.of("lions","trigers","bears");
        
+       Long alho = 12l;
+       long y = 1_3;  
     }
     
 }
