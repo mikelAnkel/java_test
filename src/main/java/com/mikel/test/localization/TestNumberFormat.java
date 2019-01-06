@@ -38,6 +38,7 @@ public class TestNumberFormat {
         NumberFormat.getPercentInstance();
         
         format.format(19.912); // convertir numero a string
+        //parse thows checked ParseException
         try {
             format.parse("10.4545"); //convertir  de string a numero
             String one = "21abc";

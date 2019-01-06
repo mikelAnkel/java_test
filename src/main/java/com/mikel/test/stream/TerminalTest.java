@@ -8,11 +8,6 @@ package com.mikel.test.stream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.BiConsumer;
-import java.util.function.BiFunction;
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 /**
@@ -46,10 +41,14 @@ public class TerminalTest {
         //long count();
         //T reduce(T identity, BinaryOperator<T> accumulator);
         //Optional<T> reduce(BinaryOperator<T> accumulator);
+        
+        //combiner funciona cuando es streamPararell
         //<U> U reduce(U identity,
         //                BiFunction<U, ? super T, U> accumulator,
         //                BinaryOperator<U> combiner);
+        
         //void forEach(Consumer<? super T> action);
+        //forza imprimirlos en orden cuando se usa pararell
         //void forEachOrdered(Consumer<? super T> action);
         //Optional<T> min(Comparator<? super T> comparator);
         //Optional<T> max(Comparator<? super T> comparator);
@@ -64,6 +63,10 @@ public class TerminalTest {
         //count()
         //min()/max() 
         //reduce
+        
+        //double sum = 0;
+        //error: local variable must be final
+        //al.stream().forEach(a->{ sum=sum+a; });
     }
 
 }

@@ -99,6 +99,10 @@ public class FunctionalTest {
      
         //Integer.divideUnsigned(0, 0);
         
+        Supplier sup = ()->5;
+        
+        sup.get();
+        
         testFunction();
     }
     

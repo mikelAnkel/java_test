@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.nio.file.StandardOpenOption;
 import java.util.Arrays;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -118,7 +119,7 @@ public class TestFile {
             //StandardCopyOption.REPLACE_EXISTING
             //el target es reemplazado ahun siendo symbolic link
             //COPY_ATTRIBUTES: copia los atributos del archivo
-
+            
             //error si no se puede copiar o archivos no encontrados
             //rescribe si son directorios al mismo nivel
             Files.move(Paths.get(""), Paths.get(""));
@@ -154,6 +155,20 @@ public class TestFile {
         } catch (Exception e) {
 
         }
+        double defaultrate = 0;
+        
+        Function<Integer, Integer> f = x->x+(int)(x*defaultrate);  //3
+        /*
+        APPEND
+        If the file is opened for WRITE access then bytes will be written to the end of the file rather than the beginning.
+        CREATE
+        Create a new file if it does not exist.
+        CREATE_NEW Create a new file, failing if the file already exists.
+        DELETE_ON_CLOSE Delete on close.
+        DSYNC Requires that every update to the file's content be written synchronously to the underlying storage device.
+        READ Open for read access.
+        SPARSE Sparse file.  SYNC Requires that every update to the file's content or metadata be written synchronously to the underlying storage device.  TRUNCATE_EXISTING If the file already exists and it is opened for WRITE access, then its length is truncated to 0.  WRITE Open for write access.
+        */
     }
 
 }

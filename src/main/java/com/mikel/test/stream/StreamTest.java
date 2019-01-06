@@ -54,6 +54,8 @@ public class StreamTest {
         Optional<Integer> op =ls.stream().max( (a,b)->a-b);
         //manda error: NoSuchElementException, si no existe ningun valor
         System.err.println( op.get() );
+        
+        
 
         max.ifPresent(System.out::println);//65 
         testToMap();

@@ -48,7 +48,8 @@ public class CalculationTest {
 //        OptionalDouble min()
 //        double sum()
 
-        IntStream is = IntStream.rangeClosed(1, 4);
+            IntStream is = IntStream.rangeClosed(1, 4);
+        is.flatMap((a) -> IntStream.of(a));
         OptionalInt sum = is.reduce((a, b)->a+b);
         int suma = is.reduce(0,(a, b)->a+b);
         System.out.println(sum.getAsInt());

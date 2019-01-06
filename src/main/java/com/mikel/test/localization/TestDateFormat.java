@@ -61,10 +61,12 @@ public class TestDateFormat {
         
         //inicializaciones
         //DateTimeException -> RuntimeException
+        LocalDateTime dateTime0 = LocalDateTime.parse("");
         LocalDateTime dateTime1 = LocalDateTime.of(2015, Month.MARCH, 6, 12, 30);
         LocalDateTime dateTime2 = LocalDateTime.of( LocalDate.of(1990, 1, 1),  LocalTime.of(hour, minute));
         //LocalDateTime dateTime3 = LocalDateTime.parse("2015-01-01 2:00:00");
         
+        LocalDate localDate0 = LocalDate.parse("");
         LocalDate localDate = LocalDate.now();
         System.out.println(localDate);// 2018-01-20
         //las operaciones retornan un nuevo LocalDate
@@ -75,6 +77,7 @@ public class TestDateFormat {
         
         //DateFormat -------------------------------------------------
         //da formato a fechas con formatos predetermnados
+        
         DateFormat s = DateFormat.getDateInstance(DateFormat.SHORT);
         DateFormat m = DateFormat.getDateInstance(DateFormat.MEDIUM);
         DateFormat l = DateFormat.getDateInstance(DateFormat.LONG);
@@ -124,6 +127,7 @@ public class TestDateFormat {
         SimpleDateFormat f3 = new SimpleDateFormat("h");
         
         try {
+            //throws ParseException
             Date date = f1.parse("01 26 2016 01:22:33");
             System.out.println("simple date format ----------------");
             
@@ -169,6 +173,7 @@ public class TestDateFormat {
         //String ltf = algo.format( DateTimeFormatter.ofLocalizedDate(FormatStyle.MEDIUM));
         String ltf = algo.format( DateTimeFormatter.ofLocalizedTime(FormatStyle.MEDIUM));
         System.out.println("localTimeFormat->"+ltf);
+        
         //
             
     }

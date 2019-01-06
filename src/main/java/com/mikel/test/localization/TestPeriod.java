@@ -65,15 +65,17 @@ public class TestPeriod {
         LocalTime two = LocalTime.of(6, 30);
         LocalTime localTimeParsed_1 =LocalTime.parse("10:15:30"); 
         //LocalTime localTimeParsed_2 =LocalTime.parse("25:15.30"); // could not be parsed: Invalid value for HourOfDay 
-       
+        
+        //return long
         System.out.println(ChronoUnit.HOURS.between(one, two));//1
         System.out.println(ChronoUnit.MINUTES.between(one, two));//75
         System.out.println(ChronoUnit.HOURS.between(two, one));//-1
+        System.out.println(ChronoUnit.HOURS.between(one, LocalTime.of(5, 45)));//0
         System.out.println( Duration.between(two, one));//PT-1H-15M
         
         //java.time.temporal.UnsupportedTemporalTypeException
         //System.out.println(ChronoUnit.DAYS.between(one, two));
-        
+        //negativo between(fecha mayor, fecha menor)
         Period p = Period.between(LocalDate.now(), LocalDate.of(2015, Month.SEPTEMBER, 1));
         System.out.println("perdiod->"+p);//P-3Y-3M-5D es negativo
          
@@ -81,10 +83,16 @@ public class TestPeriod {
         Instant now = Instant.now();
         System.out.println(now);//2015-05-25T15:15:00Z
         
+        Instant instant = Instant.parse("2014-12-03T10:15:30.00Z");
+        instant = instant.truncatedTo(ChronoUnit.DAYS);
+        //retira en este caso la hora a 0:00
+        System.out.println(instant);//trunca a la especifica unidad
+        
         ZoneId zoneId = ZoneId.of("US/Eastern");
         ZonedDateTime zoned = ZonedDateTime.now(zoneId);
         zoned.toInstant();//convert to Instant
         //LocalDateTime,LocalDate no support convert to Instant.
+        
         
        String m1 = Duration.of(1, ChronoUnit.MINUTES).toString();
        String m2 = Duration.ofMinutes(1).toString();

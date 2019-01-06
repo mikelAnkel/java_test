@@ -34,7 +34,7 @@ puede reusar hilos ya echos cuando estos están dispinibles
 ExecutorService <- Executors.newFixedThreadPool(int nThreads)
 Crea un grupo de hilos limitados por el parametro nThreads que operan desde una cola compartida
           
-ScheduledExecutorService <- SheduledThreadPool(int nThreads)
+ScheduledExecutorService <- Executors.newScheduledThreadPool(int nThreads)
 Crea un grupo de hilos limitados por el parametro nThreads, se operan por comandos para ejecutarse cada
 cierto intervalo de tiempo o periodicamente.
           
@@ -44,10 +44,8 @@ cierto intervalo de tiempo o periodicamente.
     public static void main(String[] args) {
         try {
             count();
-        } catch (ExecutionException ex) {
-            ex.printStackTrace();
-        } catch (InterruptedException ex) {
-            ex.printStackTrace();
+        } catch (Exception e){
+            
         }
 
         //use
@@ -55,7 +53,7 @@ cierto intervalo de tiempo o periodicamente.
 
     }
 
-    private static void count() throws ExecutionException, InterruptedException {
+    private static void count() {
         ExecutorService service = null;
         ScheduledExecutorService sheduledService = null;
 
@@ -67,6 +65,7 @@ cierto intervalo de tiempo o periodicamente.
                 for (int i = 0; i < 500; i++) {
                     TestCheckResult.counter++;
                 }
+                return 1;
             });
    
             //result.isDone();   //check if result is sucess
@@ -75,7 +74,8 @@ cierto intervalo de tiempo o periodicamente.
             result.get(10, TimeUnit.SECONDS);
             System.out.println("reached");
 
-        } catch (TimeoutException e) {
+        } catch (InterruptedException | ExecutionException| TimeoutException e) {
+            e.getMessage();
             System.out.println("no rearched in time");
         } finally {
             if (service != null) {
@@ -86,7 +86,7 @@ cierto intervalo de tiempo o periodicamente.
 
     private static void beepForAnHour() {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
-
+        
         ScheduledFuture<?> beeperHandle = scheduler.scheduleAtFixedRate(() -> System.out.println("beep"), 10, 10, TimeUnit.SECONDS);
         scheduler.schedule(() -> beeperHandle.cancel(true), 60 * 60, TimeUnit.SECONDS);
     }

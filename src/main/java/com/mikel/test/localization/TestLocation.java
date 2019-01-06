@@ -8,6 +8,7 @@ package com.mikel.test.localization;
 import java.util.ListResourceBundle;
 import java.util.Locale;
 import java.util.Properties;
+import java.util.ResourceBundle;
 
 /**
  *
@@ -41,6 +42,8 @@ public class TestLocation {
         System.out.println(p.get("no")); //null
         System.out.println(p.getProperty("no"));//null
         System.out.println(p.getProperty("no","default"));//default
+        
+        ResourceBundle rb = ResourceBundle.getBundle("test.MyBundle", locale);
         
         //orden de preferencia al buscar un recurso Zoo con Locale: fr_FR o 
         //simplemente "fr" con default locale US
